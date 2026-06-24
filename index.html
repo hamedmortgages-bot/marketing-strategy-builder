@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing Strategy Builder — ABC Business</title>
+<meta name="description" content="Get a professional marketing strategy for your small business in minutes. Powered by ABC Business.">
+<style>
+  :root{
+    --navy:#1F3A5F; --blue:#2E75B6; --light:#EAF1FA; --lighter:#F4F8FC;
+    --ink:#23282D; --grey:#5A6470; --line:#D5DFEA; --accent:#C0561E; --green:#2E7D52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.6;background:#fff;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  a{color:var(--blue);text-decoration:none;}
+
+  /* nav */
+  nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);z-index:10;}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-weight:800;color:var(--navy);font-size:18px;letter-spacing:.3px;}
+  .brand span{color:var(--blue);}
+  .nav-cta{background:var(--navy);color:#fff;padding:9px 18px;border-radius:24px;font-weight:600;font-size:14px;}
+
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--lighter),#fff);padding:72px 0 64px;text-align:center;}
+  .kicker{color:var(--blue);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px;}
+  .hero h1{font-size:46px;color:var(--navy);line-height:1.12;margin:14px 0 16px;}
+  .hero p.sub{font-size:19px;color:var(--grey);max-width:680px;margin:0 auto 28px;}
+  .btn{display:inline-block;background:var(--navy);color:#fff;font-weight:700;font-size:17px;padding:15px 34px;border-radius:30px;box-shadow:0 6px 18px rgba(31,58,95,.18);}
+  .btn:hover{background:#16304f;}
+  .btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;margin-left:10px;}
+  .reassure{margin-top:14px;color:var(--grey);font-size:14px;}
+
+  /* sections */
+  section{padding:64px 0;}
+  section h2{font-size:30px;color:var(--navy);text-align:center;margin-bottom:8px;}
+  section .intro{text-align:center;color:var(--grey);max-width:640px;margin:0 auto 40px;font-size:17px;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .step{background:var(--lighter);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
+  .step .n{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px;}
+  .step h3{color:var(--navy);font-size:18px;margin-bottom:6px;}
+  .step p{color:var(--grey);font-size:15px;}
+
+  .grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .out{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .out .ic{color:var(--blue);font-weight:800;font-size:18px;line-height:1.3;}
+  .out h4{color:var(--navy);font-size:15px;margin-bottom:2px;}
+  .out p{color:var(--grey);font-size:13px;}
+
+  .sample{background:var(--navy);color:#fff;border-radius:18px;padding:46px 40px;text-align:center;}
+  .sample h2{color:#fff;}
+  .sample p{color:#cfe0f2;max-width:620px;margin:0 auto 22px;font-size:17px;}
+  .sample .btn{background:#fff;color:var(--navy);}
+
+  /* form */
+  #start{background:var(--lighter);}
+  .formcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;max-width:760px;margin:0 auto;min-height:520px;}
+  .embed-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:500px;text-align:center;color:var(--grey);padding:30px;border:2px dashed var(--line);border-radius:14px;}
+  .embed-placeholder strong{color:var(--navy);font-size:18px;display:block;margin-bottom:8px;}
+  .embed-placeholder code{background:var(--lighter);padding:2px 7px;border-radius:5px;color:var(--accent);font-size:13px;}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--grey);font-size:14px;}
+
+  @media(max-width:780px){
+    .hero h1{font-size:34px;}
+    .steps,.grid9{grid-template-columns:1fr;}
+    .btn.alt{margin-left:0;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand">ABC<span>Business</span></div>
+  <a href="#start" class="nav-cta">Build my strategy</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Marketing Strategy Builder</div>
+  <h1>Get a professional marketing strategy — in minutes.</h1>
+  <p class="sub">Answer a few questions about your business and receive a complete, ready-to-use strategy: who to target, how to position, what to post, and a 30-day plan.</p>
+  <a href="#start" class="btn">Build my strategy →</a>
+  <a href="#sample" class="btn alt">See a sample</a>
+  <div class="reassure">Takes about 8 minutes · Most questions optional · Built on a proven workshop method</div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>How it works</h2>
+  <p class="intro">No jargon, no guesswork. Three simple steps from form to finished strategy.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Tell us about your business</h3><p>A short, friendly form about what you do, who you serve, and your one main goal.</p></div>
+    <div class="step"><div class="n">2</div><h3>We build your strategy</h3><p>Our engine turns your answers into a full marketing strategy using a proven framework.</p></div>
+    <div class="step"><div class="n">3</div><h3>You get a plan to act on</h3><p>A branded PDF lands in your inbox — including a 30-day action plan you can start today.</p></div>
+  </div>
+</div></section>
+
+<section style="background:var(--lighter);"><div class="wrap">
+  <h2>What you get</h2>
+  <p class="intro">Nine connected pieces that add up to one clear, professional strategy.</p>
+  <div class="grid9">
+    <div class="out"><div class="ic">1</div><div><h4>Business Analysis</h4><p>What you really sell and your biggest gap.</p></div></div>
+    <div class="out"><div class="ic">2</div><div><h4>Target Audience Profile</h4><p>Your ideal customer, in their own words.</p></div></div>
+    <div class="out"><div class="ic">3</div><div><h4>Positioning Statement</h4><p>Why you, and not the competition.</p></div></div>
+    <div class="out"><div class="ic">4</div><div><h4>Unique Value Proposition</h4><p>One sharp line for your bio or homepage.</p></div></div>
+    <div class="out"><div class="ic">5</div><div><h4>Content Pillars</h4><p>Five themes so you always know what to post.</p></div></div>
+    <div class="out"><div class="ic">6</div><div><h4>Funnel Strategy</h4><p>From first glance to booked customer.</p></div></div>
+    <div class="out"><div class="ic">7</div><div><h4>Content Recommendations</h4><p>Voice, formats, and ready-to-use post examples.</p></div></div>
+    <div class="out"><div class="ic">8</div><div><h4>KPI Recommendations</h4><p>The few numbers that actually matter.</p></div></div>
+    <div class="out"><div class="ic">9</div><div><h4>30-Day Action Plan</h4><p>A week-by-week plan you can start now.</p></div></div>
+  </div>
+</div></section>
+
+<section id="sample"><div class="wrap">
+  <div class="sample">
+    <h2>See exactly what you'll get</h2>
+    <p>Here's a complete sample strategy generated for a real-world small business. Yours will be just as detailed — built entirely around your answers.</p>
+    <a href="Strategy_Report_SAMPLE.pdf" class="btn" target="_blank" rel="noopener">View sample strategy (PDF)</a>
+  </div>
+</div></section>
+
+<section id="start"><div class="wrap">
+  <h2>Build your strategy</h2>
+  <p class="intro">Answer the questions below. We'll email your finished strategy in a few minutes.</p>
+  <div class="formcard">
+    <!--
+      EMBED YOUR FORM HERE.
+      Replace this placeholder block with the Tally/Typeform embed snippet.
+      Tally:  Share → Embed → copy the <iframe> and paste it in place of this comment.
+      Recommended iframe height: ~520px (matches the card).
+    -->
+    <div class="embed-placeholder">
+      <strong>Your intake form embeds here</strong>
+      <p>Paste your Tally or Typeform <code>&lt;iframe&gt;</code> snippet in place of the placeholder in <code>index.html</code> (look for "EMBED YOUR FORM HERE").</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  © <span id="yr"></span> ABC Business · Marketing Strategy Builder · Built for small business owners.
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+</body>
+</html>
