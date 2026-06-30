@@ -3,256 +3,241 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hamed Marketing — Marketing &amp; Content Strategy</title>
-<meta name="description" content="A marketing and content strategy studio. We turn your business into a clear, professional strategy — who you serve, how you stand apart, and exactly what to publish.">
+<title>Hamed Ashouri Marketing — Strategic Marketing Consultancy, Powered by AI</title>
+<meta name="description" content="A strategic marketing consultancy powered by AI. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#F6F1E7;
-    --cream-deep:#F0E9DA;
-    --ink:#1B2230;
-    --ink-soft:#4A515E;
-    --gold:#A6884E;
-    --gold-line:#D8C9A6;
-    --line:#E2D9C7;
-    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
-    --sans:'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--cream);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:17px;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-  ::selection{background:var(--ink);color:var(--cream);}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
-  .narrow{max-width:760px;}
-
-  a{color:inherit;text-decoration:none;}
-
-  .kicker{
-    font-family:var(--sans);
-    font-size:12px;
-    font-weight:500;
-    letter-spacing:.26em;
-    text-transform:uppercase;
-    color:var(--gold);
-  }
-  .serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;}
-
-  /* ---------- nav ---------- */
-  nav{border-bottom:1px solid var(--line);}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;}
-  .mark{font-family:var(--serif);font-size:21px;letter-spacing:.02em;color:var(--ink);}
-  .mark b{font-weight:600;}
-  .nav-link{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
-    border-bottom:1px solid var(--gold-line);padding-bottom:4px;transition:border-color .3s,color .3s;}
-  .nav-link:hover{border-color:var(--gold);color:var(--gold);}
-
-  /* ---------- hero ---------- */
-  .hero{padding:140px 0 130px;}
-  .hero .rule{width:46px;height:1px;background:var(--gold);margin:26px 0 34px;}
-  .hero h1{
-    font-family:var(--serif);
-    font-weight:400;
-    font-size:74px;
-    line-height:1.04;
-    letter-spacing:-.02em;
-    max-width:14ch;
-    color:var(--ink);
-  }
-  .hero h1 em{font-style:italic;color:var(--gold);}
-  .hero p.lede{
-    margin-top:34px;
-    max-width:54ch;
-    font-size:19px;
-    line-height:1.75;
-    color:var(--ink-soft);
-  }
-  .actions{margin-top:48px;display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
-  .btn{
-    display:inline-block;
-    font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
-    background:var(--ink);color:var(--cream);
-    padding:17px 34px;border-radius:2px;
-    transition:background .3s,transform .3s;
-  }
-  .btn:hover{background:#0F1622;}
-  .textlink{
-    font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
-    border-bottom:1px solid var(--gold-line);padding-bottom:5px;transition:border-color .3s,color .3s;
-  }
-  .textlink:hover{border-color:var(--gold);color:var(--gold);}
-
-  /* ---------- section frame ---------- */
-  section{padding:108px 0;}
-  .section-head{margin-bottom:60px;}
-  .section-head .rule{width:46px;height:1px;background:var(--gold);margin:22px 0 0;}
-  h2{font-family:var(--serif);font-weight:400;font-size:42px;line-height:1.12;letter-spacing:-.015em;margin-top:16px;color:var(--ink);}
-
-  .band{border-top:1px solid var(--line);}
-  .band-deep{background:var(--cream-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-
-  /* ---------- approach ---------- */
-  .approach{display:grid;grid-template-columns:repeat(3,1fr);gap:54px;}
-  .step .num{font-family:var(--serif);font-size:30px;color:var(--gold);font-style:italic;}
-  .step .line{width:100%;height:1px;background:var(--line);margin:18px 0 20px;}
-  .step h3{font-family:var(--serif);font-weight:500;font-size:22px;margin-bottom:10px;color:var(--ink);}
-  .step p{color:var(--ink-soft);font-size:16px;line-height:1.7;}
-
-  /* ---------- deliverables ---------- */
-  .receive{display:grid;grid-template-columns:1fr 1fr;gap:0 70px;}
-  .item{display:flex;gap:20px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);}
-  .item .idx{font-family:var(--serif);font-size:15px;color:var(--gold);min-width:30px;font-style:italic;}
-  .item h4{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);margin-bottom:3px;}
-  .item p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
-
-  /* ---------- sample ---------- */
-  .sample-inner{text-align:center;max-width:640px;margin:0 auto;}
-  .sample-inner .rule{width:46px;height:1px;background:var(--gold);margin:22px auto 0;}
-  .sample-inner h2{margin:18px 0 18px;}
-  .sample-inner p{color:var(--ink-soft);font-size:18px;margin-bottom:36px;}
-
-  /* ---------- begin / form ---------- */
-  .formframe{
-    margin-top:14px;
-    border:1px solid var(--line);
-    background:var(--cream);
-    padding:14px;
-    min-height:540px;
-  }
-  .embed-placeholder{
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    height:512px;text-align:center;color:var(--ink-soft);padding:40px;
-    border:1px solid var(--gold-line);
-  }
-  .embed-placeholder .k{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:22px;margin-bottom:14px;}
-  .embed-placeholder code{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink);background:var(--cream-deep);padding:2px 7px;border-radius:3px;}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line);padding:54px 0;}
-  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
-  footer .fmark{font-family:var(--serif);font-size:18px;color:var(--ink);}
-  footer .fnote{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);}
-
-  /* ---------- responsive ---------- */
-  @media(max-width:860px){
-    .wrap{padding:0 26px;}
-    .hero{padding:96px 0 88px;}
-    .hero h1{font-size:48px;}
-    h2{font-size:34px;}
-    section{padding:78px 0;}
-    .approach{grid-template-columns:1fr;gap:42px;}
-    .receive{grid-template-columns:1fr;gap:0;}
-  }
-  @media(max-width:480px){
-    .hero h1{font-size:39px;}
-    .actions{gap:20px;}
-  }
-</style>
+<link rel="stylesheet" href="assets/site.css">
+<!-- favicon -->
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<!-- social / open graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hamed Ashouri Marketing">
+<meta property="og:title" content="Hamed Ashouri Marketing — Strategic Marketing Consultancy, Powered by AI">
+<meta property="og:description" content="A strategic marketing consultancy powered by AI. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next.">
+<meta property="og:url" content="https://hamedmarketing.ca/">
+<meta property="og:image" content="https://hamedmarketing.ca/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hamed Ashouri Marketing — Strategic Marketing Consultancy, Powered by AI">
+<meta name="twitter:description" content="A strategic marketing consultancy powered by AI. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next.">
+<meta name="twitter:image" content="https://hamedmarketing.ca/assets/og-default.png">
 </head>
 <body>
 
-<nav><div class="wrap">
-  <div class="mark">Hamed<b>Marketing</b></div>
-  <a href="#begin" class="nav-link">Begin</a>
-</div></nav>
-
-<!-- ───────── HERO ───────── -->
-<header class="hero"><div class="wrap">
-  <span class="kicker">Marketing &amp; Content Strategy</span>
-  <div class="rule"></div>
-  <h1 class="serif">Strategy first.<br>Then content that <em>earns</em> trust.</h1>
-  <p class="lede">We turn your business into a clear, professional marketing strategy — who you serve, how you stand apart, and exactly what to publish next. Considered work, built to last.</p>
-  <div class="actions">
-    <a href="#begin" class="btn">Build your strategy</a>
-    <a href="#sample" class="textlink">View a sample</a>
-  </div>
+<!-- ===== NAV (platform) ===== -->
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-mark.svg" alt="">Hamed<b>Ashouri</b> <span class="co">Marketing</span></a>
+  <button class="nav-toggle" aria-label="Menu">≡</button>
+  <nav class="nav-links">
+    <a href="consulting.html">Services</a>
+    <a href="ai-strategy-blueprint.html">AI Tools</a>
+    <a href="insights.html">Insights</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="about.html">About</a>
+    <a class="nav-cta" href="book.html">Book a Session</a>
+  </nav>
 </div></header>
 
-<!-- ───────── APPROACH ───────── -->
-<section class="band"><div class="wrap">
-  <div class="section-head">
-    <span class="kicker">The Approach</span>
-    <h2 class="serif">Clarity, before a single post.</h2>
-    <div class="rule"></div>
+<!-- ===== HERO ===== -->
+<section class="hero"><div class="wrap">
+  <span class="kicker reveal">Strategic Marketing Consultancy · Powered by AI</span>
+  <div class="rule reveal d1"></div>
+  <h1 class="display reveal d1">Strategy is the<br>difference between<br>noise and <em>growth</em>.</h1>
+  <p class="lede reveal d2">We are a strategic marketing consultancy — powered by AI, led by judgment. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next. Considered work, built to last.</p>
+  <div class="actions reveal d3">
+    <a class="btn btn-gold" href="book.html">Book a Strategy Session <span class="arr">→</span></a>
+    <a class="textlink" href="#approach">Explore our approach</a>
   </div>
-  <div class="approach">
-    <div class="step">
-      <div class="num">01</div><div class="line"></div>
-      <h3>Understand</h3>
-      <p>We study your business, your audience, and the market you compete in — the foundation everything else rests on.</p>
+</div></section>
+
+<!-- ===== WHO WE HELP ===== -->
+<section id="who" class="band"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="kicker">Who We Help</span>
+    <h2>For businesses with real ambition<br>and no time to guess.</h2>
+  </div>
+  <div class="grid g-3">
+    <div class="card reveal"><div class="idx">01</div><h3>Founders &amp; owners</h3><p>You've built something good. You need a marketing strategy as serious as the business — a clear direction you can stand behind.</p></div>
+    <div class="card reveal d1"><div class="idx">02</div><h3>Professional practices</h3><p>Brokers, advisors, clinics and firms who win on trust. We sharpen how you're positioned so the right clients understand your value in seconds.</p></div>
+    <div class="card reveal d2"><div class="idx">03</div><h3>Growing service brands</h3><p>You're posting, but it isn't compounding. We replace busywork with a system — what to say, to whom, and why it moves people to act.</p></div>
+  </div>
+</div></section>
+
+<!-- ===== PROBLEM → OPPORTUNITY ===== -->
+<section id="problems" class="band-panel"><div class="wrap">
+  <div class="split">
+    <div class="reveal">
+      <span class="kicker">The Opportunity</span>
+      <div class="rule"></div>
+      <h2>Most marketing fails for the same quiet reasons.</h2>
+      <p class="lede" style="margin-top:22px;">Fix the strategy and the tactics finally compound. That gap — between effort and direction — is the opportunity we exist to close.</p>
     </div>
-    <div class="step">
-      <div class="num">02</div><div class="line"></div>
-      <h3>Position</h3>
-      <p>We define exactly who you serve and why you — not the competition. A position that is unique, relevant, and believable.</p>
-    </div>
-    <div class="step">
-      <div class="num">03</div><div class="line"></div>
-      <h3>Publish</h3>
-      <p>You receive content pillars, a funnel, and a thirty-day plan — so you always know what to publish, and why.</p>
+    <div class="reveal d1">
+      <div class="steps">
+        <div class="step" style="border-top:none;padding-top:0;"><div class="n">—</div><div><h3>No clear position</h3><p>You sound like everyone else, so price becomes the only difference a prospect can see.</p></div></div>
+        <div class="step"><div class="n">—</div><div><h3>No single audience</h3><p>Speaking to everyone means resonating with no one. The message blurs.</p></div></div>
+        <div class="step"><div class="n">—</div><div><h3>Tactics without a system</h3><p>Random posts, no funnel, no through-line — effort that never compounds.</p></div></div>
+        <div class="step"><div class="n">—</div><div><h3>No path to the booking</h3><p>Interest is created, then lost, because nothing guides it toward a decision.</p></div></div>
+      </div>
     </div>
   </div>
 </div></section>
 
-<!-- ───────── WHAT YOU RECEIVE ───────── -->
-<section class="band-deep"><div class="wrap">
-  <div class="section-head">
-    <span class="kicker">What You Receive</span>
-    <h2 class="serif">One intake. A complete strategy.</h2>
-    <div class="rule"></div>
+<!-- ===== PHILOSOPHY ===== -->
+<section id="philosophy" class="band"><div class="wrap mid" style="text-align:center;">
+  <span class="kicker reveal">Our Philosophy</span>
+  <div class="rule center reveal d1"></div>
+  <h2 class="reveal d1" style="margin-top:18px;">Strategy first. Then content<br>that <em>earns</em> trust.</h2>
+  <p class="lede reveal d2" style="margin-top:26px;">We believe marketing is a discipline of clarity, not volume. The work is to understand a business deeply, decide what it stands for, and express that with restraint. AI lets us do this faster and more rigorously than ever — but the judgment, taste, and accountability are human. That is the difference between an AI tool and a consultancy.</p>
+  <div class="actions reveal d2" style="justify-content:center;"><a class="textlink" href="about.html">Read our methodology</a></div>
+</div></section>
+
+<!-- ===== FRAMEWORK / APPROACH ===== -->
+<section id="approach" class="band-panel"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="kicker">Our Framework</span>
+    <h2>Clarity, before a single post.</h2>
+    <p class="lede">Three movements that turn a business into a strategy you can act on tomorrow.</p>
   </div>
-  <div class="receive">
-    <div class="item"><span class="idx">01</span><div><h4>Business Analysis</h4><p>What you truly sell, and your greatest opportunity.</p></div></div>
-    <div class="item"><span class="idx">02</span><div><h4>Target Audience Profile</h4><p>Your ideal client, in their own words.</p></div></div>
-    <div class="item"><span class="idx">03</span><div><h4>Positioning Statement</h4><p>Why you, and not the competition.</p></div></div>
-    <div class="item"><span class="idx">04</span><div><h4>Unique Value Proposition</h4><p>One line, ready for your bio or homepage.</p></div></div>
-    <div class="item"><span class="idx">05</span><div><h4>Content Pillars</h4><p>Five themes, so you never wonder what to post.</p></div></div>
-    <div class="item"><span class="idx">06</span><div><h4>Funnel Strategy</h4><p>From first glance to committed client.</p></div></div>
-    <div class="item"><span class="idx">07</span><div><h4>Content Recommendations</h4><p>Voice, formats, and worked examples.</p></div></div>
-    <div class="item"><span class="idx">08</span><div><h4>KPI Recommendations</h4><p>The few numbers that truly matter.</p></div></div>
-    <div class="item" style="border-bottom:none;"><span class="idx">09</span><div><h4>30-Day Action Plan</h4><p>A considered plan you can begin tomorrow.</p></div></div>
+  <div class="grid g-3">
+    <div class="card reveal"><div class="idx">01</div><h3>Understand</h3><p>We study your business, your audience, and the market you compete in — the foundation everything else rests on.</p></div>
+    <div class="card reveal d1"><div class="idx">02</div><h3>Position</h3><p>We define exactly who you serve and why you — not the competition. A position that is unique, relevant, and believable.</p></div>
+    <div class="card reveal d2"><div class="idx">03</div><h3>Publish</h3><p>You receive content pillars, a funnel, and a thirty-day plan — so you always know what to publish, and why.</p></div>
   </div>
 </div></section>
 
-<!-- ───────── SAMPLE ───────── -->
-<section id="sample" class="band"><div class="wrap">
-  <div class="sample-inner">
-    <span class="kicker">Proof</span>
-    <h2 class="serif">See the work, in full.</h2>
-    <div class="rule" style="margin-top:0;margin-bottom:24px;"></div>
-    <p>A complete strategy, generated for a real-world business. Yours will be just as considered — built entirely around your answers.</p>
-    <a href="Strategy_Report_SAMPLE.pdf" class="textlink" target="_blank" rel="noopener">View a sample strategy</a>
+<!-- ===== SERVICES SNAPSHOT ===== -->
+<section id="services" class="band"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="kicker">Services</span>
+    <h2>Five ways we create clarity.</h2>
+    <p class="lede">Every engagement begins with strategy. Where it goes next is up to you.</p>
+  </div>
+  <div class="grid g-3">
+    <a class="card svc reveal" href="ai-strategy-blueprint.html"><div class="tag">Signature · AI-Powered</div><h3>AI Strategy Blueprint</h3><p>A complete, personalized marketing strategy — generated from one intake and refined by a strategist.</p><span class="more">Explore the Blueprint →</span></a>
+    <a class="card svc reveal d1" href="consulting.html"><div class="tag">Advisory</div><h3>Marketing Consulting</h3><p>A senior strategic partner on call — positioning, priorities, and the calm second opinion that keeps growth on course.</p><span class="more">View consulting →</span></a>
+    <a class="card svc reveal d2" href="consulting.html"><div class="tag">Identity</div><h3>Brand Strategy</h3><p>A position the market remembers and competitors can't copy.</p><span class="more">View consulting →</span></a>
+    <a class="card svc reveal" href="content.html"><div class="tag">Voice</div><h3>Content Creation</h3><p>Strategy-led content in your voice — social, articles, email, and scripts that compound into trust.</p><span class="more">Explore content →</span></a>
+    <a class="card svc reveal d1" href="consulting.html"><div class="tag">Systems</div><h3>Growth Systems</h3><p>The quiet machinery that delivers your strategy to every client — reliably, and on brand.</p><span class="more">View consulting →</span></a>
+    <a class="card svc reveal d2" href="consulting.html" style="display:flex;flex-direction:column;justify-content:center;background:transparent;border-style:dashed;"><h3 style="color:var(--gold);">See all services</h3><p>How the engagements fit together, from first session to monthly partnership.</p><span class="more" style="color:var(--gold);">Visit the consulting hub →</span></a>
   </div>
 </div></section>
 
-<!-- ───────── BEGIN ───────── -->
-<section id="begin" class="band-deep"><div class="wrap narrow">
-  <div class="section-head" style="text-align:center;">
-    <span class="kicker">Begin</span>
-    <h2 class="serif">Build your strategy.</h2>
-    <div class="rule" style="margin:22px auto 0;"></div>
-    <p style="color:var(--ink-soft);margin-top:22px;">A few considered questions. About eight minutes. Your strategy follows by email.</p>
-  </div>
-  <div class="formframe">
-    <iframe data-tally-src="https://tally.so/embed/Pd4oZ0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="512" frameborder="0" marginheight="0" marginwidth="0" title="Marketing Strategy Builder"></iframe>
+<!-- ===== AI BLUEPRINT FEATURE ===== -->
+<section id="blueprint" class="band-panel"><div class="wrap">
+  <div class="split">
+    <div class="reveal">
+      <span class="kicker">The Signature Service</span>
+      <div class="rule"></div>
+      <h2>The AI Strategy<br>Blueprint.</h2>
+      <p class="lede" style="margin-top:22px;">One intake. About eight minutes. In return, a six-part strategic engagement — Business Diagnosis, Brand Positioning, Customer Strategy, Content Strategy, Marketing Roadmap, and Executive Recommendations. The thinking of a consulting firm, at the speed of intelligent systems.</p>
+      <div class="actions" style="margin-top:34px;"><a class="btn btn-gold" href="ai-strategy-blueprint.html">See the Blueprint <span class="arr">→</span></a></div>
+    </div>
+    <div class="panel-visual reveal d1">
+      <span class="kicker">Inside the engagement</span>
+      <div class="dlist" style="grid-template-columns:1fr;margin-top:18px;">
+        <div class="row" style="padding:12px 0;"><span class="i">01</span><div><h4>Business Diagnosis</h4></div></div>
+        <div class="row" style="padding:12px 0;"><span class="i">02</span><div><h4>Brand Positioning</h4></div></div>
+        <div class="row" style="padding:12px 0;"><span class="i">03</span><div><h4>Customer Strategy</h4></div></div>
+        <div class="row" style="padding:12px 0;"><span class="i">04</span><div><h4>Content Strategy</h4></div></div>
+        <div class="row" style="padding:12px 0;"><span class="i">05</span><div><h4>Marketing Roadmap</h4></div></div>
+        <div class="row" style="padding:12px 0;border-bottom:none;"><span class="i">06</span><div><h4>Executive Recommendations</h4></div></div>
+      </div>
+    </div>
   </div>
 </div></section>
 
-<!-- ───────── FOOTER ───────── -->
+<!-- ===== PROOF ===== -->
+<section id="proof" class="band"><div class="wrap">
+  <div class="section-head reveal">
+    <span class="kicker">Case Studies</span>
+    <h2>See the work, in full.</h2>
+    <p class="lede">A complete strategy, generated for a real-world business and refined by a strategist. Yours would be just as considered.</p>
+  </div>
+  <div class="grid g-2">
+    <div class="card reveal">
+      <div class="tag" style="color:var(--gray-soft);font-size:11px;letter-spacing:.18em;text-transform:uppercase;">Worked Example · Photography</div>
+      <h3 style="margin-top:14px;">Lumière Photography</h3>
+      <p>A maternity &amp; newborn photographer with a bilingual niche but no clear position. The Blueprint defined one ideal client, five content pillars, a booking funnel, and a 30-day plan.</p>
+      <a class="more" href="case-studies.html" style="color:var(--gold);">View case studies →</a>
+    </div>
+    <div class="ph-soft reveal d1" style="display:flex;flex-direction:column;justify-content:center;">
+      <b>Real case studies — to be added</b>
+      <p>Client results will appear here as engagements complete. We don't publish invented outcomes — share details and we format them honestly.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== WHY US ===== -->
+<section id="why" class="band-panel"><div class="wrap">
+  <div class="quote reveal">
+    <span class="kicker">Why Clients Trust Us</span>
+    <blockquote style="margin-top:26px;">"They didn't hand us more to do. They handed us clarity — and for the first time our marketing finally pointed in one direction."</blockquote>
+    <div class="by">Client testimonial · to be confirmed</div>
+  </div>
+  <div class="stats reveal d1" style="margin-top:80px;">
+    <div class="stat" style="text-align:center;"><div class="v">6</div><div class="k">Strategic sections in every Blueprint</div></div>
+    <div class="stat" style="text-align:center;"><div class="v">~8 min</div><div class="k">From intake to a complete strategy</div></div>
+    <div class="stat" style="text-align:center;"><div class="v">1:1</div><div class="k">Human review on every engagement</div></div>
+  </div>
+  <div class="actions reveal d1" style="justify-content:center;margin-top:54px;"><a class="textlink" href="about.html">Why our approach is different</a></div>
+</div></section>
+
+<!-- ===== BEGIN / CTA ===== -->
+<section id="begin" class="band"><div class="wrap">
+  <div class="cta-band reveal">
+    <span class="kicker">How to Begin</span>
+    <h2 style="margin-top:18px;">Let's give your marketing<br>a clear direction.</h2>
+    <p class="lede">Book a complimentary Strategy Session, or start with the AI Strategy Blueprint and we'll review it together.</p>
+    <div class="actions" style="justify-content:center;margin-top:40px;">
+      <a class="btn btn-gold" href="book.html">Book a Strategy Session <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="ai-strategy-blueprint.html">Start the Blueprint</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== FOOTER (platform) ===== -->
 <footer><div class="wrap">
-  <div class="fmark serif">Hamed Marketing</div>
-  <div class="fnote">Marketing &amp; Content Strategy · hamedmarketing.ca</div>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="brand"><img class="brand-mark" src="assets/logo-mark.svg" alt="">Hamed<b>Ashouri</b> <span class="co">Marketing</span></div>
+      <p>A strategic marketing consultancy, powered by AI. Clarity for businesses with real ambition.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Consulting</h5>
+      <a href="consulting.html">Marketing Consulting</a>
+      <a href="consulting.html">Brand Strategy</a>
+      <a href="consulting.html">Content Strategy</a>
+      <a href="consulting.html">Growth Systems</a>
+      <a href="ai-strategy-blueprint.html">AI Strategy Blueprint</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="about.html">About &amp; Methodology</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h5>Begin</h5>
+      <a href="book.html">Book a Session</a>
+      <a href="ai-strategy-blueprint.html">AI Strategy Blueprint</a>
+      <a href="mailto:hello@hamedmarketing.ca">hello@hamedmarketing.ca</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="fnote">© 2026 Hamed Ashouri Marketing · hamedmarketing.ca</div>
+    <div class="fnote">Strategy · Brand · Content · AI</div>
+  </div>
 </div></footer>
 
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

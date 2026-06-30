@@ -1,79 +1,95 @@
-# Marketing Strategy Builder — Landing Site
+# Hamed Ashouri Marketing — Website
 
-The public front door for ABC Business's Marketing Strategy Builder. A single static page
-(`index.html`) that pitches the tool and hosts the intake form. It is hosted free on
-**GitHub Pages** and pointed at your **GoDaddy** domain.
+The public website for **Hamed Ashouri Marketing**, a strategic marketing consultancy
+powered by AI. A multi-page static site hosted free on **GitHub Pages** and pointed at
+**hamedmarketing.ca**.
 
-> The page is just the front door. The engine (form → AI → PDF) runs in your no-code tools
-> (Tally/Typeform → Make.com → PDFMonkey). This repo only hosts the landing page + sample PDF.
-
----
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `index.html` | The landing page. Edit the **"EMBED YOUR FORM HERE"** block to paste your Tally/Typeform iframe. |
-| `Strategy_Report_SAMPLE.pdf` | The sample strategy the "See a sample" button links to. |
-| `CNAME` | Your custom domain. **Replace the placeholder** with your real domain before going live. |
-| `.nojekyll` | Tells GitHub Pages to serve files as-is. |
+> The website is the front door. The lead engine (intake form → AI → PDF → CRM → email)
+> runs in your no-code stack: **Tally → Make.com → OpenAI → PDFMonkey → Google Sheets → Gmail.**
+> This repo only hosts the pages, styles, and the sample Blueprint PDF.
 
 ---
 
-## Step 1 — Put this on GitHub
+## Pages
 
-1. Create a free account at github.com if you don't have one.
-2. Click **New repository** → name it e.g. `marketing-strategy-builder` → **Public** → Create.
-3. Upload these files (drag-and-drop in the browser is fine), or push from your computer:
+| File | Page |
+|------|------|
+| `index.html` | Home — platform router (approach, services, blueprint, proof) |
+| `about.html` | About & methodology |
+| `consulting.html` | Consulting services hub |
+| `content.html` | Content-creation services |
+| `ai-strategy-blueprint.html` | Signature service + intake form (six-part engagement) |
+| `insights.html` | Insights hub (articles, tips, resources, newsletter) |
+| `insights-5-second-test.html` | Article — the 5-second homepage test |
+| `insights-ai-wont-fix.html` | Article — AI won't fix your marketing |
+| `case-studies.html` | Case studies |
+| `book.html` | Book a session (Zoho Bookings embed) |
+| `contact.html` | Contact |
+| `thank-you.html` | Post-submission confirmation (Tally redirect target) |
+| `assets/site.css` | Shared design system (Concept A: charcoal + champagne gold) |
+| `assets/site.js` | Shared interactions + GA4 analytics loader |
+| `Strategy_Report_SAMPLE.pdf` | Sample Blueprint linked from the site |
+| `CNAME` | Custom domain — already set to `hamedmarketing.ca` |
+| `.nojekyll` | Serve files as-is on GitHub Pages |
+
+---
+
+## Go live (first time)
+
+This folder is already a git repo with an initial commit. To publish:
 
 ```bash
-git init
-git add .
-git commit -m "Landing page v1"
+# from this folder:
+git remote add origin https://github.com/<your-username>/<repo-name>.git
 git branch -M main
-git remote add origin https://github.com/<your-username>/marketing-strategy-builder.git
 git push -u origin main
 ```
 
-## Step 2 — Turn on GitHub Pages
+Then in the repo: **Settings → Pages → Source = Deploy from a branch → main → / (root) → Save.**
+Within ~1 minute the site is live. With the `CNAME` file present, GitHub serves it at
+**https://hamedmarketing.ca** once DNS is pointed (see below).
 
-1. In the repo: **Settings → Pages**.
-2. Under *Build and deployment*, Source = **Deploy from a branch**.
-3. Branch = **main**, folder = **/ (root)** → **Save**.
-4. Wait ~1 minute. Your site goes live at `https://<your-username>.github.io/marketing-strategy-builder/`.
+### DNS (GoDaddy → hamedmarketing.ca → Manage DNS)
 
-## Step 3 — Point hamedmarketing.ca at it
+| Type | Name | Value |
+|------|------|-------|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `<your-username>.github.io` |
 
-The `CNAME` file is already set to **hamedmarketing.ca** (your primary/apex domain). No edit needed.
+In **GitHub → Settings → Pages → Custom domain**, enter `hamedmarketing.ca`, Save, then
+tick **Enforce HTTPS** once available. (Confirm the current GitHub Pages IPs in GitHub's
+docs before saving — they change occasionally.)
 
-1. Log in to **GoDaddy → Domains → hamedmarketing.ca → DNS → Manage DNS**.
-2. Add these records (GoDaddy → Add Record). The four A records point the apex
-   (`hamedmarketing.ca`) at GitHub Pages; the CNAME sends `www` to the same place.
+## Update later
 
-| Type | Name | Value | Notes |
-|------|------|-------|-------|
-| A | `@` | `185.199.108.153` | GitHub Pages IP |
-| A | `@` | `185.199.109.153` | GitHub Pages IP |
-| A | `@` | `185.199.110.153` | GitHub Pages IP |
-| A | `@` | `185.199.111.153` | GitHub Pages IP |
-| CNAME | `www` | `<your-username>.github.io` | sends www → GitHub Pages |
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
 
-> Delete any existing parked "A @" record GoDaddy added by default before adding these,
-> or the domain may keep showing GoDaddy's parking page.
-
-3. Back in **GitHub → Settings → Pages → Custom domain**, enter `hamedmarketing.ca` and **Save**.
-   Tick **Enforce HTTPS** once it's available (can take an hour).
-4. DNS changes can take 15 minutes to a few hours to take effect.
-
-> Always confirm the current GitHub Pages IPs in GitHub's official docs before saving —
-> they are occasionally updated.
+GitHub Pages redeploys automatically within ~1 minute.
 
 ---
 
-## Step 4 — Embed your form
+## Activate analytics (optional, free)
 
-1. In Tally/Typeform: **Share → Embed → copy the `<iframe>`**.
-2. Open `index.html`, find `EMBED YOUR FORM HERE`, and replace the placeholder `<div>` with your iframe.
-3. Commit and push — GitHub Pages redeploys automatically.
+`assets/site.js` (and `thank-you.html`) contain a **GA4** loader that is dormant until you
+add your ID. In Google Analytics → **Admin → Data Streams → Web**, create a stream for
+`hamedmarketing.ca`, copy the **Measurement ID** (`G-XXXXXXXXXX`), and replace the placeholder
+`G-XXXXXXXXXX` in **both** `assets/site.js` and `thank-you.html`. A delivered Blueprint then
+logs a `generate_lead` conversion automatically.
 
-That's it. Visitors land on your domain, read the pitch, and start the form.
+---
+
+## Smoke test (run after each deploy)
+
+1. Home loads; nav + footer links all resolve (no 404s).
+2. **Blueprint page** intake form appears and accepts a test submission.
+3. Test submission lands on **thank-you.html** and a Blueprint email arrives.
+4. Both Insight articles open from the Insights grid.
+5. Book button opens Zoho Bookings; sample PDF link downloads.
+6. Check the site on mobile width (nav toggle works).
