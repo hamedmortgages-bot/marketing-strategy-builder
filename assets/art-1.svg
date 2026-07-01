@@ -1,0 +1,20 @@
+<svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract brand art">
+  <defs>
+    <radialGradient id="a1" cx="30%" cy="26%" r="60%"><stop offset="0%" stop-color="#33C1C9" stop-opacity="0.9"/><stop offset="100%" stop-color="#33C1C9" stop-opacity="0"/></radialGradient>
+    <radialGradient id="a2" cx="80%" cy="30%" r="60%"><stop offset="0%" stop-color="#7C50D6" stop-opacity="0.85"/><stop offset="100%" stop-color="#7C50D6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="a3" cx="60%" cy="88%" r="70%"><stop offset="0%" stop-color="#EFA254" stop-opacity="0.9"/><stop offset="100%" stop-color="#EFA254" stop-opacity="0"/></radialGradient>
+    <radialGradient id="a4" cx="18%" cy="82%" r="55%"><stop offset="0%" stop-color="#DB4E86" stop-opacity="0.7"/><stop offset="100%" stop-color="#DB4E86" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="#141319"/>
+  <rect width="900" height="900" fill="url(#a1)"/>
+  <rect width="900" height="900" fill="url(#a2)"/>
+  <rect width="900" height="900" fill="url(#a3)"/>
+  <rect width="900" height="900" fill="url(#a4)"/>
+  <rect width="900" height="900" fill="#100F14" opacity="0.22"/>
+  <g fill="none" stroke="#FDF4DF" opacity="0.5">
+    <circle cx="450" cy="430" r="120" stroke-width="1.4"/>
+    <circle cx="450" cy="430" r="200" stroke-width="1" opacity="0.6"/>
+    <circle cx="450" cy="430" r="290" stroke-width="1" opacity="0.35"/>
+  </g>
+  <path d="M450,250 L470,410 L640,430 L470,450 L450,610 L430,450 L260,430 L430,410 Z" fill="#FFF3D6" opacity="0.85"/>
+</svg>

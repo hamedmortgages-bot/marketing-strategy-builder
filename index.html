@@ -8,6 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
+<style>
+  .hero .split{align-items:center;}
+  .hero-art{width:100%;max-width:520px;margin:0 auto;}
+  @media(max-width:860px){ .hero .split{grid-template-columns:1fr;gap:40px;} .hero-art{max-width:360px;} }
+</style>
 <!-- favicon -->
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -46,13 +51,18 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero"><div class="wrap">
-  <span class="kicker reveal">Strategic Marketing Consultancy · Powered by AI</span>
-  <div class="rule reveal d1"></div>
-  <h1 class="display reveal d1">Strategy is the<br>difference between<br>noise and <em>growth</em>.</h1>
-  <p class="lede reveal d2">We are a strategic marketing consultancy — powered by AI, led by judgment. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next. Considered work, built to last.</p>
-  <div class="actions reveal d3">
-    <a class="btn btn-gold" href="book.html">Book a Strategy Session <span class="arr">→</span></a>
-    <a class="textlink" href="#approach">Explore our approach</a>
+  <div class="split">
+    <div>
+      <span class="kicker reveal">Strategic Marketing Consultancy · Powered by AI</span>
+      <div class="rule reveal d1"></div>
+      <h1 class="display reveal d1">Strategy is the<br>difference between<br>noise and <em>growth</em>.</h1>
+      <p class="lede reveal d2">We are a strategic marketing consultancy — powered by AI, led by judgment. We give ambitious businesses the clarity to know exactly who they serve, why they win, and what to do next. Considered work, built to last.</p>
+      <div class="actions reveal d3">
+        <a class="btn btn-gold" href="book.html">Book a Strategy Session <span class="arr">→</span></a>
+        <a class="textlink" href="#approach">Explore our approach</a>
+      </div>
+    </div>
+    <div class="reveal d2"><img class="hero-art" src="assets/hero-art-color.svg" alt="Clarity motif"></div>
   </div>
 </div></section>
 
