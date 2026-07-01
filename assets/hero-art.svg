@@ -1,0 +1,41 @@
+<svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clarity motif">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="55%">
+      <stop offset="0%" stop-color="#C2A36B" stop-opacity="0.18"/>
+      <stop offset="55%" stop-color="#C2A36B" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#C2A36B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C2A36B" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#C2A36B" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#C2A36B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="480" fill="#211E1A"/>
+  <rect width="560" height="480" fill="url(#glow)"/>
+  <g transform="translate(280,222)">
+    <!-- concentric rings -->
+    <circle r="40"  fill="none" stroke="#C2A36B" stroke-width="1" opacity="0.85"/>
+    <circle r="78"  fill="none" stroke="#C2A36B" stroke-width="1" opacity="0.5"/>
+    <circle r="118" fill="none" stroke="#C2A36B" stroke-width="1" opacity="0.32"/>
+    <circle r="160" fill="none" stroke="#C2A36B" stroke-width="1" opacity="0.18"/>
+    <circle r="204" fill="none" stroke="#C2A36B" stroke-width="1" opacity="0.10"/>
+    <!-- radiating rays (8) -->
+    <g stroke="url(#ray)" stroke-width="1.2">
+      <line x1="0" y1="-210" x2="0" y2="210"/>
+      <line x1="-210" y1="0" x2="210" y2="0"/>
+      <line x1="-148" y1="-148" x2="148" y2="148"/>
+      <line x1="148" y1="-148" x2="-148" y2="148"/>
+    </g>
+    <!-- four-point star (north star of clarity) -->
+    <path d="M0,-150 L16,-16 L150,0 L16,16 L0,150 L-16,16 L-150,0 L-16,-16 Z"
+          fill="#C2A36B" opacity="0.14"/>
+    <path d="M0,-110 L11,-11 L110,0 L11,11 L0,110 L-11,11 L-110,0 L-11,-11 Z"
+          fill="none" stroke="#D8BC86" stroke-width="1.4" opacity="0.9"/>
+    <!-- focal core -->
+    <circle r="7" fill="#D8BC86"/>
+    <circle r="14" fill="none" stroke="#EFE9DC" stroke-width="1" opacity="0.6"/>
+  </g>
+  <!-- fine baseline mark -->
+  <text x="280" y="452" text-anchor="middle" fill="#897F6E" font-family="Georgia,serif" font-style="italic" font-size="16" opacity="0.8">clarity, by design</text>
+</svg>

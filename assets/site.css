@@ -310,3 +310,48 @@ footer{border-top:1px solid var(--line-soft);background:var(--bg-2);padding:80px
   .res-row{grid-template-columns:1fr;gap:12px;}
   .newsletter{padding:46px 26px;}
 }
+
+/* ============================================================================
+   BILINGUAL — Persian / RTL support  (added for the Farsi site)
+   Scope every rule under [dir="rtl"] so the English site is untouched.
+   Persian uses Vazirmatn; letter-spacing & uppercase are removed because
+   they break Persian's connected script.
+   ========================================================================== */
+[dir="rtl"]{ text-align:right; }
+[dir="rtl"] body{ font-family:'Vazirmatn', Tahoma, sans-serif; font-weight:400; }
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] h4,
+[dir="rtl"] .display,[dir="rtl"] .lede,[dir="rtl"] p,[dir="rtl"] blockquote,
+[dir="rtl"] .card h3,[dir="rtl"] .step h3{ font-family:'Vazirmatn', Tahoma, sans-serif; font-style:normal; }
+[dir="rtl"] .display{ font-weight:600; line-height:1.35; letter-spacing:0; }
+[dir="rtl"] h1 em,[dir="rtl"] h2 em,[dir="rtl"] .display em{ font-style:normal; color:var(--gold); }
+[dir="rtl"] p,[dir="rtl"] .lede,[dir="rtl"] blockquote,[dir="rtl"] li{ line-height:2; }
+/* kill Latin letter-spacing / uppercase that mangle Persian */
+[dir="rtl"] .kicker,[dir="rtl"] .tag,[dir="rtl"] .more,[dir="rtl"] .btn,
+[dir="rtl"] .nav-cta,[dir="rtl"] .nav-links a,[dir="rtl"] .foot-col h5,
+[dir="rtl"] .fnote,[dir="rtl"] .by,[dir="rtl"] .stat .k,[dir="rtl"] .textlink,
+[dir="rtl"] .rtype,[dir="rtl"] .lab{ letter-spacing:0 !important; text-transform:none !important; }
+/* directional arrow flips */
+[dir="rtl"] .btn .arr{ display:inline-block; transform:scaleX(-1); }
+[dir="rtl"] .btn:hover .arr{ transform:translateX(-4px) scaleX(-1); }
+/* keep the Latin brand wordmark + numerals in their original faces */
+[dir="rtl"] .brand{ font-family:var(--serif); direction:ltr; }
+[dir="rtl"] .idx,[dir="rtl"] .n,[dir="rtl"] .i,[dir="rtl"] .v,[dir="rtl"] .num{ font-family:var(--serif); }
+
+/* ---- Language switch (EN / فارسی) ---- */
+.lang-switch{ display:inline-flex; align-items:center; gap:9px; font-size:12.5px; }
+.lang-switch a{ color:var(--gray); transition:color .3s var(--ease); }
+.lang-switch a:hover{ color:var(--white); }
+.lang-switch a.active{ color:var(--gold); }
+.lang-switch .sep{ color:var(--gold-line); }
+
+/* ---- Branded graphic frames (the "art" visuals + photo slots) ---- */
+.media-art{ position:relative; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  background:var(--panel); min-height:340px; display:flex; align-items:center; justify-content:center; }
+.media-art img,.media-art svg{ width:100%; height:100%; object-fit:cover; display:block; }
+.hero-art{ width:100%; max-width:520px; margin-inline:auto; }
+/* photo slot: drop a real image in by setting --img:url(assets/your.jpg) */
+.photo-slot{ position:relative; border-radius:10px; overflow:hidden; min-height:360px;
+  background:linear-gradient(135deg,#211E1A,#2B2720); border:1px solid var(--line); }
+.photo-slot.has-img{ background-size:cover; background-position:center; }
+.photo-slot .ph-label{ position:absolute; inset:auto 0 0 0; padding:14px 18px; font-size:12px;
+  color:var(--gray-soft); background:linear-gradient(transparent,rgba(0,0,0,.5)); }
