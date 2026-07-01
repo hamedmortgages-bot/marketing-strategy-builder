@@ -1,0 +1,36 @@
+<svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Consulting that compounds — ascension motif">
+  <defs>
+    <radialGradient id="csA" cx="24%" cy="72%" r="60%"><stop offset="0%" stop-color="#2FB3B8" stop-opacity="0.85"/><stop offset="100%" stop-color="#2FB3B8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="csB" cx="80%" cy="26%" r="58%"><stop offset="0%" stop-color="#7A4FD0" stop-opacity="0.8"/><stop offset="100%" stop-color="#7A4FD0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="csC" cx="74%" cy="84%" r="60%"><stop offset="0%" stop-color="#E0894E" stop-opacity="0.85"/><stop offset="100%" stop-color="#E0894E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="csD" cx="20%" cy="22%" r="55%"><stop offset="0%" stop-color="#D24C86" stop-opacity="0.65"/><stop offset="100%" stop-color="#D24C86" stop-opacity="0"/></radialGradient>
+    <radialGradient id="csCore" cx="58%" cy="44%" r="52%"><stop offset="0%" stop-color="#FBE7C6" stop-opacity="0.9"/><stop offset="45%" stop-color="#E7C888" stop-opacity="0.22"/><stop offset="100%" stop-color="#E7C888" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="560" height="480" rx="14" fill="#141319"/>
+  <rect width="560" height="480" rx="14" fill="url(#csA)"/>
+  <rect width="560" height="480" rx="14" fill="url(#csB)"/>
+  <rect width="560" height="480" rx="14" fill="url(#csC)"/>
+  <rect width="560" height="480" rx="14" fill="url(#csD)"/>
+  <rect width="560" height="480" rx="14" fill="#0E0D12" opacity="0.30"/>
+  <rect width="560" height="480" rx="14" fill="url(#csCore)"/>
+  <!-- ascending steps -->
+  <g>
+    <rect x="120" y="330" width="66" height="70" rx="4" fill="#FBE6BE" opacity="0.16"/>
+    <rect x="200" y="278" width="66" height="122" rx="4" fill="#FBE6BE" opacity="0.22"/>
+    <rect x="280" y="222" width="66" height="178" rx="4" fill="#FBE6BE" opacity="0.30"/>
+    <rect x="360" y="160" width="66" height="240" rx="4" fill="#FBE6BE" opacity="0.40"/>
+    <g fill="none" stroke="#FDF4DF" stroke-width="1.4" opacity="0.85">
+      <rect x="120" y="330" width="66" height="70" rx="4"/>
+      <rect x="200" y="278" width="66" height="122" rx="4"/>
+      <rect x="280" y="222" width="66" height="178" rx="4"/>
+      <rect x="360" y="160" width="66" height="240" rx="4"/>
+    </g>
+  </g>
+  <!-- rising arrow -->
+  <g stroke="#FFF3D6" stroke-width="2.2" fill="none" opacity="0.95" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150,300 L233,250 L313,196 L393,132"/>
+    <path d="M366,120 L400,124 L396,158"/>
+  </g>
+  <circle cx="393" cy="132" r="6" fill="#FFF7E4"/>
+  <text x="280" y="452" text-anchor="middle" fill="#EAD9B8" font-family="Georgia,serif" font-style="italic" font-size="16" opacity="0.85">strategy that compounds</text>
+</svg>

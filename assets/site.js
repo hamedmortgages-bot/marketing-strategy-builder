@@ -28,16 +28,82 @@
     }
   }
 
-  // Mobile nav toggle
+  var isRTL = (document.documentElement.getAttribute('dir') === 'rtl') ||
+              /-fa\.html?$/i.test(location.pathname);
+  var file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  // ---- Skip-to-content link (a11y): first focusable element on the page ----
+  var main = document.querySelector('header.nav') &&
+             document.querySelector('header.nav').nextElementSibling;
+  if (!main) main = document.querySelector('section');
+  if (main && !document.getElementById('main')) {
+    main.id = 'main';
+    main.setAttribute('tabindex', '-1');
+    var skip = document.createElement('a');
+    skip.className = 'skip-link';
+    skip.href = '#main';
+    skip.textContent = isRTL ? 'رفتن به محتوا' : 'Skip to content';
+    document.body.insertBefore(skip, document.body.firstChild);
+  }
+
+  // ---- Current-page highlight in the nav (wayfinding) ----
+  var navAnchors = document.querySelectorAll('.nav-links a');
+  navAnchors.forEach(function (a) {
+    var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+    if (href && href === file && !a.classList.contains('nav-cta') &&
+        !a.closest('.lang-switch')) {
+      a.classList.add('current');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+
+  // ---- Mobile nav toggle (accessible: aria-expanded, Esc, click-outside, scroll-lock) ----
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
   if (toggle && links) {
+    links.id = links.id || 'primary-nav';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'primary-nav');
+    var setMenu = function (open) {
+      links.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
     toggle.addEventListener('click', function () {
-      links.classList.toggle('open');
+      setMenu(!links.classList.contains('open'));
     });
     links.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') links.classList.remove('open');
+      if (e.target.tagName === 'A') setMenu(false);
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        setMenu(false); toggle.focus();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('open') &&
+          !links.contains(e.target) && !toggle.contains(e.target)) {
+        setMenu(false);
+      }
+    });
+  }
+
+  // ---- Mobile sticky CTA bar (Book + Blueprint), injected on every page ----
+  // Skipped where redundant: the booking page and the thank-you page.
+  var suppress = /^(book|thank-?you)/i.test(file) ||
+                 document.body.getAttribute('data-conversion') === 'lead';
+  if (suppress) { document.body.classList.add('no-mobilecta'); }
+  else {
+    var bpHref = isRTL ? 'ai-strategy-blueprint-fa.html' : 'ai-strategy-blueprint.html';
+    var bar = document.createElement('div');
+    bar.className = 'mobile-cta';
+    bar.setAttribute('aria-label', isRTL ? 'اقدام سریع' : 'Quick actions');
+    bar.innerHTML =
+      '<a class="m-book" href="book.html">' +
+        (isRTL ? 'رزرو جلسه' : 'Book a Session') + '</a>' +
+      '<a class="m-bp" href="' + bpHref + '">' +
+        (isRTL ? 'بلوپرینت رایگان' : 'Free Blueprint') + '</a>';
+    document.body.appendChild(bar);
   }
 
   // Subtle scroll reveals

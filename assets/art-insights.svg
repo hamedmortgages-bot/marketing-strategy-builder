@@ -1,0 +1,26 @@
+<svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Insights — lens of clarity motif">
+  <defs>
+    <radialGradient id="inA" cx="70%" cy="30%" r="55%"><stop offset="0%" stop-color="#2FB3B8" stop-opacity="0.85"/><stop offset="100%" stop-color="#2FB3B8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="inB" cx="24%" cy="34%" r="55%"><stop offset="0%" stop-color="#7A4FD0" stop-opacity="0.8"/><stop offset="100%" stop-color="#7A4FD0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="inC" cx="30%" cy="82%" r="58%"><stop offset="0%" stop-color="#E0894E" stop-opacity="0.85"/><stop offset="100%" stop-color="#E0894E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="inD" cx="80%" cy="80%" r="55%"><stop offset="0%" stop-color="#D24C86" stop-opacity="0.65"/><stop offset="100%" stop-color="#D24C86" stop-opacity="0"/></radialGradient>
+    <radialGradient id="inLens" cx="44%" cy="42%" r="55%"><stop offset="0%" stop-color="#FFF7E4" stop-opacity="0.5"/><stop offset="60%" stop-color="#E7C888" stop-opacity="0.1"/><stop offset="100%" stop-color="#E7C888" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="560" height="480" rx="14" fill="#141319"/>
+  <rect width="560" height="480" rx="14" fill="url(#inA)"/>
+  <rect width="560" height="480" rx="14" fill="url(#inB)"/>
+  <rect width="560" height="480" rx="14" fill="url(#inC)"/>
+  <rect width="560" height="480" rx="14" fill="url(#inD)"/>
+  <rect width="560" height="480" rx="14" fill="#0E0D12" opacity="0.30"/>
+  <!-- magnifier -->
+  <g>
+    <circle cx="250" cy="210" r="112" fill="url(#inLens)"/>
+    <circle cx="250" cy="210" r="112" fill="none" stroke="#FDF4DF" stroke-width="3" opacity="0.9"/>
+    <circle cx="250" cy="210" r="96" fill="none" stroke="#FFF3D6" stroke-width="1" opacity="0.4"/>
+    <line x1="330" y1="292" x2="410" y2="372" stroke="#FDF4DF" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+    <!-- spark of insight inside lens -->
+    <path d="M250,150 L262,198 L310,210 L262,222 L250,270 L238,222 L190,210 L238,198 Z" fill="#FFF3D6" opacity="0.9"/>
+    <circle cx="250" cy="210" r="6" fill="#FFF7E4"/>
+  </g>
+  <text x="280" y="452" text-anchor="middle" fill="#EAD9B8" font-family="Georgia,serif" font-style="italic" font-size="16" opacity="0.85">clarity, before the post</text>
+</svg>

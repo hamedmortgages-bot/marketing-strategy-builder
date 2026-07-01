@@ -1,0 +1,42 @@
+<svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI Strategy Blueprint — six-part engagement motif">
+  <defs>
+    <radialGradient id="bpA" cx="28%" cy="28%" r="55%"><stop offset="0%" stop-color="#2FB3B8" stop-opacity="0.8"/><stop offset="100%" stop-color="#2FB3B8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bpB" cx="80%" cy="30%" r="55%"><stop offset="0%" stop-color="#7A4FD0" stop-opacity="0.8"/><stop offset="100%" stop-color="#7A4FD0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bpC" cx="70%" cy="82%" r="58%"><stop offset="0%" stop-color="#E0894E" stop-opacity="0.85"/><stop offset="100%" stop-color="#E0894E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bpD" cx="22%" cy="80%" r="55%"><stop offset="0%" stop-color="#D24C86" stop-opacity="0.65"/><stop offset="100%" stop-color="#D24C86" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bpCore" cx="50%" cy="46%" r="52%"><stop offset="0%" stop-color="#FBE7C6" stop-opacity="0.85"/><stop offset="50%" stop-color="#E7C888" stop-opacity="0.18"/><stop offset="100%" stop-color="#E7C888" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="560" height="480" rx="14" fill="#141319"/>
+  <rect width="560" height="480" rx="14" fill="url(#bpA)"/>
+  <rect width="560" height="480" rx="14" fill="url(#bpB)"/>
+  <rect width="560" height="480" rx="14" fill="url(#bpC)"/>
+  <rect width="560" height="480" rx="14" fill="url(#bpD)"/>
+  <rect width="560" height="480" rx="14" fill="#0E0D12" opacity="0.30"/>
+  <rect width="560" height="480" rx="14" fill="url(#bpCore)"/>
+  <!-- six-part grid -->
+  <g font-family="Georgia,serif" font-size="26" fill="#FFF3D6">
+    <g fill="#FBE6BE" opacity="0.14">
+      <rect x="118" y="118" width="104" height="104" rx="8"/>
+      <rect x="238" y="118" width="104" height="104" rx="8"/>
+      <rect x="358" y="118" width="104" height="104" rx="8"/>
+      <rect x="118" y="238" width="104" height="104" rx="8"/>
+      <rect x="238" y="238" width="104" height="104" rx="8"/>
+      <rect x="358" y="238" width="104" height="104" rx="8"/>
+    </g>
+    <g fill="none" stroke="#FDF4DF" stroke-width="1.3" opacity="0.85">
+      <rect x="118" y="118" width="104" height="104" rx="8"/>
+      <rect x="238" y="118" width="104" height="104" rx="8"/>
+      <rect x="358" y="118" width="104" height="104" rx="8"/>
+      <rect x="118" y="238" width="104" height="104" rx="8"/>
+      <rect x="238" y="238" width="104" height="104" rx="8"/>
+      <rect x="358" y="238" width="104" height="104" rx="8"/>
+    </g>
+    <text x="170" y="179" text-anchor="middle" opacity="0.9">01</text>
+    <text x="290" y="179" text-anchor="middle" opacity="0.9">02</text>
+    <text x="410" y="179" text-anchor="middle" opacity="0.9">03</text>
+    <text x="170" y="299" text-anchor="middle" opacity="0.9">04</text>
+    <text x="290" y="299" text-anchor="middle" opacity="0.9">05</text>
+    <text x="410" y="299" text-anchor="middle" opacity="0.9">06</text>
+  </g>
+  <text x="280" y="452" text-anchor="middle" fill="#EAD9B8" font-family="Georgia,serif" font-style="italic" font-size="16" opacity="0.85">one intake, a whole strategy</text>
+</svg>

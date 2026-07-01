@@ -27,7 +27,7 @@
   --white:#F4F0E8;      /* headings (brightest) */
   --offwhite:#EFE9DC;   /* ivory — body copy */
   --gray:#A79E8E;       /* warm gray secondary */
-  --gray-soft:#897F6E;  /* tertiary / labels */
+  --gray-soft:#9C9282;  /* tertiary / labels — nudged brighter for AA contrast on panels */
   --ink:#15130F;        /* text on gold */
 
   --serif:'Fraunces', Georgia, 'Times New Roman', serif;
@@ -355,3 +355,58 @@ footer{border-top:1px solid var(--line-soft);background:var(--bg-2);padding:80px
 .photo-slot.has-img{ background-size:cover; background-position:center; }
 .photo-slot .ph-label{ position:absolute; inset:auto 0 0 0; padding:14px 18px; font-size:12px;
   color:var(--gray-soft); background:linear-gradient(transparent,rgba(0,0,0,.5)); }
+
+/* ============================================================================
+   USABILITY & ACCESSIBILITY LAYER  (added — friendlier nav, focus, mobile CTA)
+   Central: applies to every page via shared site.css. English + RTL safe.
+   ============================================================================ */
+
+/* 1 — Keyboard focus visibility (was missing; keyboard users had no indicator) */
+a:focus-visible, button:focus-visible, .btn:focus-visible,
+input:focus-visible, textarea:focus-visible, select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--gold-bright); outline-offset:3px; border-radius:2px;
+}
+
+/* 2 — Skip-to-content link (injected by site.js as the first focusable element) */
+.skip-link{ position:absolute; left:16px; top:-60px; z-index:200;
+  background:var(--gold); color:var(--ink); padding:10px 18px; border-radius:3px;
+  font-family:var(--sans); font-size:13px; font-weight:500; letter-spacing:.06em;
+  transition:top .25s var(--ease); }
+.skip-link:focus{ top:12px; }
+
+/* 3 — Current-page highlight in the nav (wayfinding) */
+.nav-links a.current{ color:var(--white); }
+.nav-links a.current::after{ content:""; display:block; height:1px; margin-top:4px;
+  background:var(--gold); }
+
+/* 4 — Lock body scroll while the mobile menu is open */
+body.nav-open{ overflow:hidden; }
+
+/* 5 — Mobile sticky CTA bar (injected by site.js; hidden on desktop) */
+.mobile-cta{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none; gap:10px;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(28,26,23,.95); backdrop-filter:saturate(140%) blur(12px);
+  border-top:1px solid var(--line); }
+.mobile-cta a{ flex:1; text-align:center; font-family:var(--sans); font-size:12.5px;
+  font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:15px 8px; border-radius:3px; white-space:nowrap; }
+.mobile-cta .m-book{ background:var(--gold); color:var(--ink); }
+.mobile-cta .m-bp{ border:1px solid var(--gold-line); color:var(--white); }
+[dir="rtl"] .mobile-cta a{ letter-spacing:0; text-transform:none; font-weight:600; }
+
+/* 6 — Bigger, comfier tap targets on phones */
+@media(max-width:760px){
+  .mobile-cta{ display:flex; }
+  body{ padding-bottom:74px; }              /* clear space for the sticky bar */
+  .foot-col a{ padding:10px 0; }            /* was 6px — easier to tap */
+  .lang-switch{ font-size:15px; gap:12px; }
+  .textlink{ display:inline-block; padding:10px 0; }
+  .nav-toggle{ font-size:26px; padding:6px 8px; line-height:1; }
+}
+/* Hide the sticky bar on pages where it would be redundant (set via body class) */
+body.no-mobilecta .mobile-cta{ display:none !important; }
+body.no-mobilecta{ padding-bottom:0; }
+
+/* Respect reduced-motion for the skip link + bar transitions */
+@media(prefers-reduced-motion:reduce){ .skip-link{ transition:none; } }
