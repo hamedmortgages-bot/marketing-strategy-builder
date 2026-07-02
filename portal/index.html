@@ -345,7 +345,7 @@ async function load() {
   document.getElementById('errbox').style.display = 'none';
   document.getElementById('loading').style.display = 'block';
   try {
-    const res = await fetch(csvUrl('Sheet1'));
+    const res = await fetch(csvUrl('Marketing Strategy Builder'));
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const text = await res.text();
     if (text.trimStart().startsWith('<')) throw new Error('Sheet is not shared publicly yet');
