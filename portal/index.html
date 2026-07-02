@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CRM Portal — Hamed Ashouri Marketing</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" crossorigin="anonymous"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --charcoal: #1C1A17; --gold: #C2A36B; --gold-dark: #A5854D;
+    --ivory: #EFE9DC; --paper: #FAF7F0; --white: #FFFFFF;
+    --muted: #6B6459; --line: #E2DACA;
+    --green: #3E7C4F; --red: #A94438; --blue: #3B6E8F; --purple: #6B5B8F;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--paper); color: var(--charcoal); font-size: 14px; line-height: 1.5; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, 'Times New Roman', serif; }
+
+  /* ---- passcode gate ---- */
+  #gate { position: fixed; inset: 0; background: var(--charcoal); z-index: 100;
+    display: flex; align-items: center; justify-content: center; }
+  #gate .box { background: var(--white); border-radius: 14px; padding: 36px 32px; width: min(380px, 90vw); text-align: center; }
+  #gate .logo { width: 52px; height: 52px; border-radius: 50%; background: var(--gold);
+    color: var(--charcoal); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 20px; font-family: Georgia, serif; margin: 0 auto 14px; }
+  #gate h1 { font-size: 20px; margin-bottom: 4px; }
+  #gate p { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+  #gate input { width: 100%; font: inherit; padding: 11px 14px; border: 1px solid var(--line);
+    border-radius: 9px; text-align: center; letter-spacing: 1px; }
+  #gate button { width: 100%; margin-top: 12px; background: var(--charcoal); color: var(--gold);
+    border: none; border-radius: 9px; padding: 12px; font: inherit; font-weight: 600; cursor: pointer; }
+  #gate .bad { color: var(--red); font-size: 12.5px; margin-top: 10px; min-height: 18px; }
+
+  header { background: var(--charcoal); color: var(--ivory); padding: 16px 24px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  header .logo { width: 38px; height: 38px; border-radius: 50%; background: var(--gold);
+    color: var(--charcoal); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px; font-family: Georgia, serif; flex-shrink: 0; }
+  header h1 { font-size: 19px; font-weight: 600; }
+  header .sub { font-size: 12px; color: #B8AE9C; }
+  header .right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  header .status { font-size: 12px; color: var(--gold); }
+  .hbtn { background: none; border: 1px solid #4A463F; color: var(--ivory); border-radius: 7px;
+    padding: 5px 11px; font: inherit; font-size: 12px; cursor: pointer; }
+  .hbtn:hover { border-color: var(--gold); color: var(--gold); }
+
+  nav { background: var(--white); border-bottom: 1px solid var(--line); padding: 0 24px;
+    display: flex; gap: 2px; overflow-x: auto; }
+  nav button { background: none; border: none; padding: 13px 13px; font: inherit; font-weight: 500;
+    color: var(--muted); cursor: pointer; border-bottom: 2.5px solid transparent; white-space: nowrap; }
+  nav button.active { color: var(--charcoal); border-bottom-color: var(--gold); }
+  nav button:hover { color: var(--charcoal); }
+  nav .count { background: var(--ivory); border-radius: 10px; padding: 1px 7px; font-size: 11px; margin-left: 4px; color: var(--charcoal); }
+
+  main { padding: 22px 24px 60px; max-width: 1240px; margin: 0 auto; }
+  .view { display: none; } .view.active { display: block; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .kpi { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .kpi .num { font-size: 27px; font-weight: 700; font-family: Georgia, serif; }
+  .kpi .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+  .kpi.gold { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+  .kpi.gold .num { color: var(--gold); } .kpi.gold .lbl { color: #B8AE9C; }
+
+  .panel { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-bottom: 18px; }
+  .panel h3 { font-size: 15px; margin-bottom: 12px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+  .chartbox { position: relative; height: 230px; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .6px;
+    color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--line); white-space: nowrap; }
+  td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr.rowlink { cursor: pointer; } tr.rowlink:hover { background: var(--ivory); }
+  .tablewrap { overflow-x: auto; }
+
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+  .b-new, .b-discovery, .b-open, .b-prospect { background: #E8EEF3; color: var(--blue); }
+  .b-contacted, .b-proposal { background: #F3EEE2; color: var(--gold-dark); }
+  .b-qualified, .b-active, .b-done { background: #E9F1EB; color: var(--green); }
+  .b-converted, .b-won { background: var(--charcoal); color: var(--gold); }
+  .b-lost { background: #F5E7E4; color: var(--red); }
+  .b-negotiation { background: #EDE9F3; color: var(--purple); }
+  .b-past { background: var(--ivory); color: var(--muted); }
+
+  select.stage, .drawer-form select, .drawer-form input, .drawer-form textarea {
+    font: inherit; font-size: 13px; padding: 6px 8px; border: 1px solid var(--line);
+    border-radius: 7px; background: var(--white); color: var(--charcoal); }
+  select.stage { font-size: 12.5px; padding: 4px 6px; cursor: pointer; }
+  input.search { font: inherit; padding: 9px 14px; border: 1px solid var(--line); border-radius: 8px;
+    width: 100%; max-width: 340px; background: var(--white); }
+  :focus { outline: 2px solid var(--gold); }
+
+  .toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .btn { background: var(--charcoal); color: var(--gold); border: none; border-radius: 8px;
+    padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  .btn:hover { background: #2E2B26; }
+  .btn.ghost { background: var(--white); color: var(--charcoal); border: 1px solid var(--line); }
+  .btn.danger { background: #F5E7E4; color: var(--red); }
+
+  .board { display: grid; grid-template-columns: repeat(5, minmax(180px, 1fr)); gap: 12px; }
+  @media (max-width: 900px) { .board { grid-template-columns: repeat(2, 1fr); } }
+  .col { background: var(--ivory); border-radius: 10px; padding: 10px; min-height: 110px; }
+  .col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted);
+    padding: 4px 6px 10px; display: flex; justify-content: space-between; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 12px; margin-bottom: 8px; cursor: pointer; }
+  .card:hover { border-color: var(--gold); }
+  .card .biz { font-weight: 600; font-size: 13px; }
+  .card .meta { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+  .card .val { font-size: 12px; color: var(--gold-dark); font-weight: 600; margin-top: 2px; }
+
+  #overlay { display: none; position: fixed; inset: 0; background: rgba(28,26,23,.45); z-index: 40; }
+  #drawer { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 94vw);
+    background: var(--white); z-index: 50; box-shadow: -8px 0 30px rgba(0,0,0,.18);
+    overflow-y: auto; padding: 24px; }
+  #drawer.open, #overlay.open { display: block; }
+  #drawer .close { float: right; background: var(--ivory); border: none; border-radius: 8px;
+    padding: 6px 12px; cursor: pointer; font: inherit; }
+  #drawer h2 { font-size: 20px; margin-bottom: 4px; padding-right: 70px; }
+  #drawer .field { margin-top: 13px; }
+  #drawer .field .k { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+  #drawer .field .v { margin-top: 2px; white-space: pre-wrap; }
+  .drawer-form label { display: block; margin-top: 12px; font-size: 12px; font-weight: 600; }
+  .drawer-form input, .drawer-form select, .drawer-form textarea { width: 100%; margin-top: 4px; }
+  .drawer-form textarea { min-height: 60px; }
+  .drawer-actions { margin-top: 20px; display: flex; gap: 10px; }
+
+  #loading { text-align: center; padding: 70px 20px; color: var(--muted); }
+  .spin { width: 30px; height: 30px; border: 3px solid var(--line); border-top-color: var(--gold);
+    border-radius: 50%; margin: 0 auto 14px; animation: sp 1s linear infinite; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  .err { background: #F5E7E4; color: var(--red); border-radius: 10px; padding: 16px; }
+  .err a { color: var(--red); }
+  .note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .empty { color: var(--muted); padding: 20px; text-align: center; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--charcoal); color: var(--gold); padding: 10px 22px; border-radius: 10px;
+    font-size: 13px; z-index: 60; display: none; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <div class="logo">HA</div>
+    <h1>CRM Portal</h1>
+    <p>Hamed Ashouri Marketing — private area</p>
+    <input type="password" id="pass" placeholder="Passcode" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')checkPass()">
+    <button onclick="checkPass()">Enter</button>
+    <div class="bad" id="passErr"></div>
+  </div>
+</div>
+
+<header>
+  <div class="logo">HA</div>
+  <div>
+    <h1>Hamed Ashouri Marketing — CRM Portal</h1>
+    <div class="sub">Leads live from Google Sheets · CRM records saved in this browser</div>
+  </div>
+  <div class="right">
+    <button class="hbtn" onclick="load()">Refresh ⟳</button>
+    <button class="hbtn" onclick="exportData()">Backup ↓</button>
+    <button class="hbtn" onclick="document.getElementById('importFile').click()">Restore ↑</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
+    <div class="status" id="lastSync">Loading…</div>
+  </div>
+</header>
+
+<nav id="tabs">
+  <button data-view="dashboard" class="active">Dashboard</button>
+  <button data-view="leads">Leads <span class="count" id="cLeads">–</span></button>
+  <button data-view="pipeline">Deals</button>
+  <button data-view="contacts">Messages <span class="count" id="cContacts">–</span></button>
+  <button data-view="clients">Clients <span class="count" id="cClients">–</span></button>
+  <button data-view="companies">Companies <span class="count" id="cCompanies">–</span></button>
+  <button data-view="projects">Projects <span class="count" id="cProjects">–</span></button>
+  <button data-view="activities">Activities <span class="count" id="cActivities">–</span></button>
+</nav>
+
+<main>
+  <div id="loading"><div class="spin"></div>Fetching live leads from Google Sheets…</div>
+  <div id="errbox" class="err" style="display:none"></div>
+
+  <section class="view" id="v-dashboard">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2">
+      <div class="panel"><h3>Leads by industry</h3><div class="chartbox"><canvas id="chIndustry"></canvas></div></div>
+      <div class="panel"><h3>Project pipeline value ($)</h3><div class="chartbox"><canvas id="chPipeline"></canvas></div></div>
+    </div>
+    <div class="panel"><h3>Latest leads</h3><div class="tablewrap"><table id="tblRecent"></table></div></div>
+    <div class="panel"><h3>Open activities</h3><div class="tablewrap"><table id="tblOpenAct"></table></div></div>
+  </section>
+
+  <section class="view" id="v-leads">
+    <div class="toolbar"><input class="search" id="q" type="search" placeholder="Search business, industry, city, goal…"></div>
+    <div class="panel"><div class="tablewrap"><table id="tblLeads"></table></div>
+      <div class="note">Leads come live from your Blueprint form. Click a row for the full record — from there you can Convert a lead into a Client + Company + Project.</div>
+    </div>
+  </section>
+
+  <section class="view" id="v-pipeline">
+    <h3 style="margin-bottom:12px">Lead stages</h3>
+    <div class="board" id="board"></div>
+    <h3 style="margin:22px 0 12px">Project pipeline</h3>
+    <div class="board" id="boardProjects"></div>
+  </section>
+
+  <section class="view" id="v-contacts">
+    <div class="panel"><div class="tablewrap"><table id="tblContacts"></table></div>
+      <div class="note" id="contactNote"></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-clients"></section>
+  <section class="view" id="v-companies"></section>
+  <section class="view" id="v-projects"></section>
+  <section class="view" id="v-activities"></section>
+</main>
+
+<div id="overlay" onclick="closeDrawer()"></div>
+<div id="drawer"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- passcode gate (deterrent-level, client-side) ---------- */
+const PASS_HASH = '1353e4f88f044ab9288ac64b24aa258aa7d82bdfbb3aedfb75a7946571767690';
+async function sha256(s) {
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+async function checkPass() {
+  const v = document.getElementById('pass').value;
+  if (await sha256(v) === PASS_HASH) {
+    sessionStorage.setItem('crm_auth', '1');
+    document.getElementById('gate').style.display = 'none';
+    load();
+  } else {
+    document.getElementById('passErr').textContent = 'Wrong passcode — try again.';
+  }
+}
+if (sessionStorage.getItem('crm_auth') === '1') {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('gate').style.display = 'none';
+  });
+}
+
+const SHEET_ID = '1-ZS8wEWsEw1z2uYcMNKXz2F9IJD_XHEVjTMHQlqF6fM';
+const csvUrl = sheet => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}`;
+const LEAD_STAGES = ['New', 'Contacted', 'Qualified', 'Converted', 'Lost'];
+const PROJECT_STAGES = ['Discovery', 'Proposal', 'Negotiation', 'Won', 'Lost'];
+
+let leads = [], contacts = [], charts = {};
+
+/* ---------- persistence ---------- */
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+  set(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+};
+const stages = store.get('crm_stages', {});
+const notes  = store.get('crm_notes', {});
+const db = store.get('crm_db', { clients: [], companies: [], projects: [], activities: [] });
+function saveDb() { store.set('crm_db', db); }
+const stageOf = l => stages[l.id] || 'New';
+function setStage(id, s) { stages[id] = s; store.set('crm_stages', stages); renderAll(); }
+function setNote(id, t)  { notes[id] = t;  store.set('crm_notes',  notes); }
+function nextId(prefix, arr) {
+  const n = arr.reduce((m, r) => Math.max(m, parseInt((r.id || '').split('-')[1]) || 0), 0) + 1;
+  return prefix + '-' + String(n).padStart(3, '0');
+}
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  clearTimeout(t._h); t._h = setTimeout(() => t.style.display = 'none', 2600);
+}
+
+/* ---------- module definitions ---------- */
+const MODULES = {
+  clients: { label: 'Clients', prefix: 'C', title: r => r.name, fields: [
+    { k: 'name', l: 'Name' }, { k: 'email', l: 'Email' }, { k: 'phone', l: 'Phone' },
+    { k: 'company', l: 'Company' }, { k: 'role', l: 'Role' },
+    { k: 'status', l: 'Status', type: 'select', options: ['Prospect', 'Active', 'Past'] },
+    { k: 'since', l: 'Client Since', type: 'date' }, { k: 'notes', l: 'Notes', type: 'textarea' }],
+    cols: ['name', 'email', 'company', 'status', 'since'] },
+  companies: { label: 'Companies', prefix: 'CO', title: r => r.name, fields: [
+    { k: 'name', l: 'Company Name' }, { k: 'industry', l: 'Industry' }, { k: 'website', l: 'Website' },
+    { k: 'city', l: 'City' },
+    { k: 'size', l: 'Size', type: 'select', options: ['Solo', 'Small (1-10)', 'Medium (11-50)', 'Large (50+)'] },
+    { k: 'notes', l: 'Notes', type: 'textarea' }],
+    cols: ['name', 'industry', 'city', 'website', 'size'] },
+  projects: { label: 'Projects', prefix: 'P', title: r => r.name, fields: [
+    { k: 'name', l: 'Project Name' }, { k: 'client', l: 'Client' }, { k: 'company', l: 'Company' },
+    { k: 'service', l: 'Service', type: 'select', options: ['AI Strategy Blueprint', 'Marketing Consulting', 'Brand Strategy', 'Content Retainer', 'Website', 'Workshop', 'Other'] },
+    { k: 'stage', l: 'Stage', type: 'select', options: PROJECT_STAGES },
+    { k: 'value', l: 'Value ($)', type: 'number' }, { k: 'start', l: 'Start Date', type: 'date' },
+    { k: 'due', l: 'Due Date', type: 'date' }, { k: 'next', l: 'Next Action' },
+    { k: 'notes', l: 'Notes', type: 'textarea' }],
+    cols: ['name', 'client', 'service', 'stage', 'value', 'due', 'next'] },
+  activities: { label: 'Activities', prefix: 'A', title: r => r.subject, fields: [
+    { k: 'date', l: 'Date', type: 'date' },
+    { k: 'type', l: 'Type', type: 'select', options: ['Call', 'Email', 'Meeting', 'Task', 'Note'] },
+    { k: 'related', l: 'Related To' }, { k: 'subject', l: 'Subject' },
+    { k: 'status', l: 'Status', type: 'select', options: ['Open', 'Done'] },
+    { k: 'due', l: 'Due', type: 'date' }, { k: 'notes', l: 'Notes', type: 'textarea' }],
+    cols: ['date', 'type', 'related', 'subject', 'status', 'due'] }
+};
+
+/* ---------- CSV parsing ---------- */
+function parseCSV(text) {
+  const rows = []; let row = [], cur = '', inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQ) {
+      if (c === '"') {
+        if (text[i+1] === '"') { cur += '"'; i++; }
+        else inQ = false;
+      } else cur += c;
+    } else if (c === '"') inQ = true;
+    else if (c === ',') { row.push(cur); cur = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i+1] === '\n') i++;
+      row.push(cur); cur = '';
+      if (row.some(x => x !== '')) rows.push(row);
+      row = [];
+    } else cur += c;
+  }
+  if (cur !== '' || row.length) { row.push(cur); if (row.some(x => x !== '')) rows.push(row); }
+  return rows;
+}
+const colIdx = (header, names) => {
+  for (const n of names) {
+    const i = header.findIndex(h => h.toLowerCase().includes(n.toLowerCase()));
+    if (i >= 0) return i;
+  }
+  return -1;
+};
+
+/* ---------- live data load ---------- */
+async function load() {
+  document.getElementById('errbox').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  try {
+    const res = await fetch(csvUrl('Sheet1'));
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    if (text.trimStart().startsWith('<')) throw new Error('Sheet is not shared publicly yet');
+    const rows = parseCSV(text);
+    if (rows.length < 1) throw new Error('No data returned');
+    const header = rows[0], body = rows.slice(1);
+    const iId = colIdx(header, ['Submission ID']), iDate = colIdx(header, ['Submitted at']),
+      iBiz = colIdx(header, ['Business name']), iInd = colIdx(header, ['Industry']),
+      iCity = colIdx(header, ['city or region']), iFocus = colIdx(header, ['focus most']),
+      iGoal = colIdx(header, ['ONE goal']), iEmail = colIdx(header, ['email so we can send']),
+      iWeb = colIdx(header, ['Your website']);
+    leads = body.filter(r => r.some(c => c !== '')).map((r, n) => ({
+      id: r[iId] || 'row' + n,
+      date: r[iDate] || '', biz: r[iBiz] || '(no name)', industry: r[iInd] || '—',
+      city: r[iCity] || '—', focus: r[iFocus] || '—', goal: r[iGoal] || '—',
+      email: r[iEmail] || '', website: r[iWeb] || '',
+      all: header.map((h, i) => [h, r[i] || '']).filter(([h, v]) => v && !h.includes('('))
+    })).reverse();
+
+    contacts = [];
+    try {
+      const res2 = await fetch(csvUrl('Contact'));
+      if (res2.ok) {
+        const t2 = await res2.text();
+        if (!t2.trimStart().startsWith('<')) {
+          const rows2 = parseCSV(t2);
+          if (rows2.length > 1) {
+            const h2 = rows2[0];
+            for (const r of rows2.slice(1)) contacts.push({ header: h2, row: r });
+          }
+        }
+      }
+    } catch (e) { /* contact sheet optional */ }
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('lastSync').textContent =
+      'Synced ' + new Date().toLocaleString('en-CA', { dateStyle: 'medium', timeStyle: 'short' });
+    renderAll();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const eb = document.getElementById('errbox');
+    eb.style.display = 'block';
+    eb.innerHTML = '<strong>Live leads not connected yet.</strong> ' + esc(e.message) +
+      '.<br><br>One-time fix (60 seconds): open the “Marketing Strategy Builder” Google Sheet → Share → General access → <strong>Anyone with the link — Viewer</strong> → Done. Then hit Refresh ⟳ above.<br><br>Your CRM records below still work.';
+    renderAll();
+  }
+}
+
+/* ---------- rendering ---------- */
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fdate = d => d ? String(d).split(' ')[0] : '—';
+const money = v => '$' + Number(v || 0).toLocaleString('en-CA');
+function badge(s) { return s ? `<span class="badge b-${String(s).toLowerCase()}">${esc(s)}</span>` : '—'; }
+function stageSel(l) {
+  return `<select class="stage" onclick="event.stopPropagation()" onchange="setStage('${esc(l.id)}', this.value)">` +
+    LEAD_STAGES.map(s => `<option ${s === stageOf(l) ? 'selected' : ''}>${s}</option>`).join('') + '</select>';
+}
+
+function renderAll() {
+  const weekAgo = Date.now() - 7 * 864e5;
+  const newWeek = leads.filter(l => new Date(l.date) >= weekAgo).length;
+  const counts = {}; LEAD_STAGES.forEach(s => counts[s] = 0);
+  leads.forEach(l => counts[stageOf(l)]++);
+  const openVal = db.projects.filter(p => !['Won', 'Lost'].includes(p.stage))
+    .reduce((s, p) => s + Number(p.value || 0), 0);
+  const wonVal = db.projects.filter(p => p.stage === 'Won')
+    .reduce((s, p) => s + Number(p.value || 0), 0);
+  const openActs = db.activities.filter(a => a.status !== 'Done');
+
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi gold"><div class="num">${leads.length}</div><div class="lbl">Total leads</div></div>
+    <div class="kpi"><div class="num">${newWeek}</div><div class="lbl">New this week</div></div>
+    <div class="kpi"><div class="num">${counts.Qualified}</div><div class="lbl">Qualified</div></div>
+    <div class="kpi"><div class="num">${db.clients.filter(c => c.status === 'Active').length}</div><div class="lbl">Active clients</div></div>
+    <div class="kpi"><div class="num">${money(openVal)}</div><div class="lbl">Open pipeline</div></div>
+    <div class="kpi"><div class="num">${money(wonVal)}</div><div class="lbl">Won</div></div>
+    <div class="kpi"><div class="num">${openActs.length}</div><div class="lbl">Open activities</div></div>`;
+
+  const inds = {};
+  leads.forEach(l => inds[l.industry] = (inds[l.industry] || 0) + 1);
+  drawChart('chIndustry', 'bar', Object.keys(inds), Object.values(inds), '#C2A36B');
+  const pv = PROJECT_STAGES.map(s => db.projects.filter(p => p.stage === s)
+    .reduce((a, p) => a + Number(p.value || 0), 0));
+  drawChart('chPipeline', 'bar', PROJECT_STAGES, pv, ['#3B6E8F', '#C2A36B', '#6B5B8F', '#3E7C4F', '#A94438']);
+
+  renderLeadTable('tblRecent', leads.slice(0, 5), false);
+  filterLeads();
+
+  document.getElementById('board').innerHTML = LEAD_STAGES.map(s => {
+    const ls = leads.filter(l => stageOf(l) === s);
+    return `<div class="col"><h4>${s} <span>${ls.length}</span></h4>` +
+      ls.map(l => `<div class="card" onclick="openLead('${esc(l.id)}')">
+        <div class="biz">${esc(l.biz)}</div>
+        <div class="meta">${esc(l.industry)} · ${fdate(l.date)}</div></div>`).join('') + '</div>';
+  }).join('');
+  document.getElementById('boardProjects').innerHTML = PROJECT_STAGES.map(s => {
+    const ps = db.projects.filter(p => p.stage === s);
+    return `<div class="col"><h4>${s} <span>${ps.length}</span></h4>` +
+      ps.map(p => `<div class="card" onclick="openRecord('projects','${esc(p.id)}')">
+        <div class="biz">${esc(p.name)}</div>
+        <div class="meta">${esc(p.client || p.company || '')}</div>
+        <div class="val">${money(p.value)}</div></div>`).join('') + '</div>';
+  }).join('');
+
+  const oa = document.getElementById('tblOpenAct');
+  oa.innerHTML = !openActs.length ? '<tr><td class="empty">No open activities. Add one in the Activities tab.</td></tr>' :
+    '<tr><th>Due</th><th>Type</th><th>Subject</th><th>Related to</th></tr>' +
+    openActs.slice(0, 6).map(a => `<tr class="rowlink" onclick="openRecord('activities','${esc(a.id)}')">
+      <td>${fdate(a.due)}</td><td>${esc(a.type)}</td><td>${esc(a.subject)}</td><td>${esc(a.related)}</td></tr>`).join('');
+
+  renderContacts();
+  for (const key of Object.keys(MODULES)) renderModule(key);
+
+  document.getElementById('cLeads').textContent = leads.length;
+  document.getElementById('cContacts').textContent = contacts.length;
+  document.getElementById('cClients').textContent = db.clients.length;
+  document.getElementById('cCompanies').textContent = db.companies.length;
+  document.getElementById('cProjects').textContent = db.projects.length;
+  document.getElementById('cActivities').textContent = db.activities.length;
+}
+
+function renderLeadTable(elId, rows, withStageSel) {
+  const el = document.getElementById(elId);
+  if (!rows.length) { el.innerHTML = '<tr><td class="empty">No leads found.</td></tr>'; return; }
+  el.innerHTML = `<tr><th>Date</th><th>Business</th><th>Industry</th><th>City</th><th>Goal</th><th>Stage</th></tr>` +
+    rows.map(l => `<tr class="rowlink" onclick="openLead('${esc(l.id)}')">
+      <td>${fdate(l.date)}</td>
+      <td><strong>${esc(l.biz)}</strong><br><span style="color:var(--muted);font-size:12px">${esc(l.email)}</span></td>
+      <td>${esc(l.industry)}</td><td>${esc(l.city)}</td><td>${esc(l.goal)}</td>
+      <td>${withStageSel ? stageSel(l) : badge(stageOf(l))}</td></tr>`).join('');
+}
+function filterLeads() {
+  const q = (document.getElementById('q').value || '').toLowerCase();
+  const rows = !q ? leads : leads.filter(l =>
+    [l.biz, l.industry, l.city, l.goal, l.focus, l.email].join(' ').toLowerCase().includes(q));
+  renderLeadTable('tblLeads', rows, true);
+}
+function renderContacts() {
+  const el = document.getElementById('tblContacts');
+  const note = document.getElementById('contactNote');
+  if (!contacts.length) {
+    el.innerHTML = '<tr><td class="empty">No contact-form messages in this sync.</td></tr>';
+    note.textContent = 'Website contact-form submissions (Contact worksheet) appear here automatically.';
+    return;
+  }
+  const h = contacts[0].header;
+  const shown = h.map((x, i) => i).filter(i => h[i] && !h[i].includes('(')).slice(0, 6);
+  el.innerHTML = '<tr>' + shown.map(i => `<th>${esc(h[i])}</th>`).join('') + '</tr>' +
+    contacts.map(c => '<tr>' + shown.map(i => `<td>${esc(c.row[i] || '')}</td>`).join('') + '</tr>').join('');
+  note.textContent = '';
+}
+
+/* ---------- generic CRM modules ---------- */
+function renderModule(key) {
+  const M = MODULES[key];
+  const rows = db[key];
+  const el = document.getElementById('v-' + key);
+  const head = M.cols.map(c => `<th>${esc(M.fields.find(f => f.k === c)?.l || c)}</th>`).join('');
+  const body = !rows.length ?
+    `<tr><td class="empty" colspan="${M.cols.length + 1}">No ${M.label.toLowerCase()} yet — click “+ New”.</td></tr>` :
+    rows.map(r => `<tr class="rowlink" onclick="openRecord('${key}','${esc(r.id)}')">
+      <td style="color:var(--muted)">${esc(r.id)}</td>` +
+      M.cols.map(c => {
+        const f = M.fields.find(f => f.k === c);
+        let v = r[c];
+        if (c === 'value') v = money(v);
+        else if (f?.type === 'date') v = fdate(v);
+        else if (f?.type === 'select' && c !== 'size') return `<td>${badge(v)}</td>`;
+        return `<td>${esc(v || '—')}</td>`;
+      }).join('') + '</tr>').join('');
+  el.innerHTML = `
+    <div class="toolbar">
+      <button class="btn" onclick="openRecord('${key}', null)">+ New ${M.label.replace(/s$/, '')}</button>
+    </div>
+    <div class="panel"><div class="tablewrap"><table><tr><th>ID</th>${head}</tr>${body}</table></div></div>`;
+}
+
+function openRecord(key, id) {
+  const M = MODULES[key];
+  const r = id ? db[key].find(x => x.id === id) : {};
+  const d = document.getElementById('drawer');
+  d.innerHTML = `<button class="close" onclick="closeDrawer()">Close ✕</button>
+    <h2>${id ? esc(M.title(r) || id) : 'New ' + M.label.replace(/s$/, '')}</h2>
+    <div class="note">${id ? esc(id) : 'Saved in this browser (use Backup ↓ regularly)'}</div>
+    <div class="drawer-form" id="recForm">` +
+    M.fields.map(f => {
+      const v = esc(r[f.k] || '');
+      if (f.type === 'select') return `<label>${f.l}<select data-k="${f.k}">` +
+        f.options.map(o => `<option ${o === r[f.k] ? 'selected' : ''}>${o}</option>`).join('') + '</select></label>';
+      if (f.type === 'textarea') return `<label>${f.l}<textarea data-k="${f.k}">${v}</textarea></label>`;
+      return `<label>${f.l}<input type="${f.type || 'text'}" data-k="${f.k}" value="${v}"></label>`;
+    }).join('') + `</div>
+    <div class="drawer-actions">
+      <button class="btn" onclick="saveRecord('${key}', ${id ? `'${esc(id)}'` : 'null'})">Save</button>
+      ${id ? `<button class="btn danger" onclick="deleteRecord('${key}','${esc(id)}')">Delete</button>` : ''}
+      <button class="btn ghost" onclick="closeDrawer()">Cancel</button>
+    </div>`;
+  d.classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function saveRecord(key, id) {
+  const M = MODULES[key];
+  const rec = id ? db[key].find(x => x.id === id) : { id: nextId(M.prefix, db[key]) };
+  document.querySelectorAll('#recForm [data-k]').forEach(el => rec[el.dataset.k] = el.value);
+  if (!id) db[key].push(rec);
+  saveDb(); closeDrawer(); toast('Saved ' + rec.id);
+}
+function deleteRecord(key, id) {
+  if (!confirm('Delete ' + id + '?')) return;
+  db[key] = db[key].filter(x => x.id !== id);
+  saveDb(); closeDrawer(); toast('Deleted ' + id);
+}
+
+/* ---------- lead drawer + conversion ---------- */
+function openLead(id) {
+  const l = leads.find(x => x.id === id);
+  if (!l) return;
+  const d = document.getElementById('drawer');
+  const converted = stageOf(l) === 'Converted';
+  d.innerHTML = `<button class="close" onclick="closeDrawer()">Close ✕</button>
+    <h2>${esc(l.biz)}</h2>
+    <div style="margin:6px 0 2px">${badge(stageOf(l))} &nbsp; ${stageSel(l)}</div>
+    <div class="drawer-actions" style="margin-top:14px">
+      <button class="btn" ${converted ? 'disabled style="opacity:.5"' : ''} onclick="convertLead('${esc(l.id)}')">
+        ${converted ? 'Converted ✓' : 'Convert → Client + Company + Project'}</button>
+    </div>
+    <div class="field"><div class="k">My notes (saved in this browser)</div>
+      <textarea style="width:100%;min-height:70px;font:inherit;font-size:13px;padding:8px;border:1px solid var(--line);border-radius:8px;margin-top:4px"
+        onblur="setNote('${esc(l.id)}', this.value)">${esc(notes[l.id] || '')}</textarea></div>` +
+    l.all.map(([k, v]) => `<div class="field"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div>`).join('');
+  d.classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function convertLead(id) {
+  const l = leads.find(x => x.id === id);
+  if (!l) return;
+  let co = db.companies.find(c => c.name.toLowerCase() === l.biz.toLowerCase());
+  if (!co) {
+    co = { id: nextId('CO', db.companies), name: l.biz, industry: l.industry,
+      website: l.website, city: l.city, size: '', notes: 'Converted from lead ' + l.id };
+    db.companies.push(co);
+  }
+  let cl = db.clients.find(c => c.email && c.email === l.email && c.company === l.biz);
+  if (!cl) {
+    cl = { id: nextId('C', db.clients), name: l.biz + ' — contact', email: l.email, phone: '',
+      company: l.biz, role: '', status: 'Prospect', since: '', notes: 'Converted from lead ' + l.id };
+    db.clients.push(cl);
+  }
+  const p = { id: nextId('P', db.projects), name: l.biz + ' — ' + (l.goal !== '—' ? l.goal : 'Engagement'),
+    client: cl.name, company: co.name, service: 'AI Strategy Blueprint', stage: 'Discovery',
+    value: '', start: new Date().toISOString().slice(0, 10), due: '', next: 'Book discovery call',
+    notes: 'Created from lead ' + l.id };
+  db.projects.push(p);
+  db.activities.push({ id: nextId('A', db.activities), date: new Date().toISOString().slice(0, 10),
+    type: 'Task', related: p.id + ' ' + l.biz, subject: 'Follow up on converted lead',
+    status: 'Open', due: '', notes: '' });
+  saveDb();
+  stages[l.id] = 'Converted'; store.set('crm_stages', stages);
+  closeDrawer();
+  toast('Converted → ' + cl.id + ', ' + co.id + ', ' + p.id);
+}
+
+/* ---------- backup / restore ---------- */
+function exportData() {
+  const blob = new Blob([JSON.stringify({ db, stages, notes, exported: new Date().toISOString() }, null, 2)],
+    { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'crm-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+  toast('Backup downloaded');
+}
+function importData(input) {
+  const f = input.files[0]; if (!f) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try {
+      const j = JSON.parse(rd.result);
+      if (j.db) { Object.assign(db, j.db); saveDb(); }
+      if (j.stages) { Object.assign(stages, j.stages); store.set('crm_stages', stages); }
+      if (j.notes) { Object.assign(notes, j.notes); store.set('crm_notes', notes); }
+      renderAll(); toast('Backup restored');
+    } catch { toast('Invalid backup file'); }
+  };
+  rd.readAsText(f);
+  input.value = '';
+}
+
+/* ---------- charts / tabs ---------- */
+function drawChart(id, type, labels, data, color) {
+  if (charts[id]) charts[id].destroy();
+  charts[id] = new Chart(document.getElementById(id), {
+    type, data: { labels, datasets: [{ data, backgroundColor: color, borderWidth: 0, borderRadius: 4 }] },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+  });
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  renderAll();
+}
+document.getElementById('tabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('nav button').forEach(x => x.classList.toggle('active', x === b));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('v-' + b.dataset.view).classList.add('active');
+  if (b.dataset.view === 'dashboard') renderAll();
+});
+document.getElementById('q').addEventListener('input', filterLeads);
+document.getElementById('v-dashboard').classList.add('active');
+
+if (sessionStorage.getItem('crm_auth') === '1') load();
+</script>
+</body>
+</html>
