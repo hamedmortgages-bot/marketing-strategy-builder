@@ -61,7 +61,12 @@
 <!-- CONTACT FORM -->
 <section class="band-panel"><div class="wrap narrow">
   <div class="section-head reveal" style="text-align:center;margin-bottom:40px;"><span class="kicker">ارسالِ پیام</span><h2>بگویید روی چه کاری هستید.</h2></div>
-  <form class="reveal d1" action="mailto:hello@hamedmarketing.ca" method="post" enctype="text/plain" style="display:grid;gap:16px;max-width:620px;margin:0 auto;">
+  <form class="reveal d1" action="https://formsubmit.co/hello@hamedmarketing.ca" method="POST" style="display:grid;gap:16px;max-width:620px;margin:0 auto;">
+    <input type="hidden" name="_subject" value="پیام جدید از فرم تماس hamedmarketing.ca">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://hamedmarketing.ca/index-fa.html">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <input type="text" name="name" placeholder="نامِ شما" required style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:'Vazirmatn',sans-serif;font-size:15px;text-align:right;">
     <input type="email" name="email" placeholder="ایمیل" required style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:'Vazirmatn',sans-serif;font-size:15px;text-align:right;">
     <input type="text" name="business" placeholder="کسب‌وکار (اختیاری)" style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:'Vazirmatn',sans-serif;font-size:15px;text-align:right;">

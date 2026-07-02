@@ -70,7 +70,12 @@
 <section class="band-panel"><div class="wrap narrow">
   <div class="section-head reveal" style="text-align:center;margin-bottom:40px;"><span class="kicker">Send a Note</span><h2>Tell us what you're working on.</h2></div>
   <!-- Wire this form to your Tally contact form or a mail handler. Falls back to email below. -->
-  <form class="reveal d1" action="mailto:hello@hamedmarketing.ca" method="post" enctype="text/plain" style="display:grid;gap:16px;max-width:620px;margin:0 auto;">
+  <form class="reveal d1" action="https://formsubmit.co/hello@hamedmarketing.ca" method="POST" style="display:grid;gap:16px;max-width:620px;margin:0 auto;">
+    <input type="hidden" name="_subject" value="New message from hamedmarketing.ca contact form">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://hamedmarketing.ca/thank-you.html">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <input type="text" name="name" placeholder="Your name" required style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:var(--sans);font-size:15px;">
     <input type="email" name="email" placeholder="Email" required style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:var(--sans);font-size:15px;">
     <input type="text" name="business" placeholder="Business (optional)" style="background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:16px 18px;color:var(--offwhite);font-family:var(--sans);font-size:15px;">
